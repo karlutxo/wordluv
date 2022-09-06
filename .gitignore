@@ -12,3 +12,4 @@ wordluv_site/wordluv_site/__pycache__/__init__.cpython-310.pyc
 wordluv_site/wordluv_site/__pycache__/settings.cpython-310.pyc
 wordluv_site/wordluv_site/__pycache__/urls.cpython-310.pyc
 wordluv_site/wordluv_site/__pycache__/wsgi.cpython-310.pyc
+wordluv_site/.env
