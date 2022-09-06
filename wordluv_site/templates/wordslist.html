@@ -1,0 +1,27 @@
+<body>   
+    <h2>My Words List</h2>    
+
+   {# {{ request }} #}
+   <div>
+    <form action="">
+        <label for="searchWord">Search:</label><input type="text" id="searchWord" name="searchWord">
+        <input type="submit" value="Submit">
+    </form>
+   </div> 
+   <hr>
+   <div>
+    {% if searchWord %}
+        Words starting with {{ searchWord }}
+    {% endif %}
+   <table>
+    {% for word in words %}
+       <tr>
+          <td><a href="{% url 'worddetail' word.word %}">{{ word.word }}</a></td>
+          <td>{{ word.meaning|linebreaksbr }}</td>
+          <td>{{ word.examples|linebreaksbr }}</td>
+        </tr>
+    {% endfor %}
+    </table>
+    </div> 
+
+</body>   
