@@ -5,11 +5,13 @@
 
 
    {% block content %}
-   <h1>{{ word.word }}</h1>
+   <h1>{{ word.word }}</h1> <a href="{% url 'wordUpdate' word.slug %}"><small>edit</small></a>
  
    <p><strong>Meaning:</strong> {{ word.meaning }}</p>
    <p><strong>Examples:</strong> {{ word.example }}</p>
  {% endblock %}
+
+ 
 
  <hr>
  <a href="{% url 'wordslist' %}">Volver</a>

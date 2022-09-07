@@ -1,9 +1,12 @@
 import genericpath
+
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import word
 from django.views.generic.detail import DetailView
+from django.views.generic.edit import UpdateView
 from django.views import generic
+
+from .models import word
 
 
 def WordListView(request):
@@ -32,4 +35,7 @@ class WordDetailViewSlug(generic.DetailView):
     template_name = 'wordDetail.html'
 
 
-
+class WordUpdateView(UpdateView):
+    model = word
+    fields = ['meaning', 'examples']
+    template_name = 'wordUpdate.html'

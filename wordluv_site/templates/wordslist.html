@@ -16,6 +16,7 @@
    <table>
     {% for word in words %}
        <tr>
+        <td><a href="{% url 'wordUpdate' word.slug %}">edit</a></td>
         <td><a href="{% url 'worddetailSlug' word.slug %}">{{ word.word }}</a></td>
         <td>{{ word.meaning|linebreaksbr }}</td>
         <td>{{ word.examples|linebreaksbr }}</td>
