@@ -3,6 +3,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .models import word
 from django.views.generic.detail import DetailView
+from django.views import generic
 
 
 def WordListView(request):
@@ -21,3 +22,14 @@ def WordListView(request):
 
 def WordDetail(request, word_id):
     return HttpResponse("You're looking at word %s." % word_id)
+
+class WordDetailViewId(generic.DetailView):
+    model = word
+    template_name = 'wordDetail.html'
+
+class WordDetailViewSlug(generic.DetailView):
+    model = word
+    template_name = 'wordDetail.html'
+
+
+
