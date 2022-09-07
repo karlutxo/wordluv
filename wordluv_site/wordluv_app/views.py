@@ -1,9 +1,10 @@
 import genericpath
 
 from django.shortcuts import render
+from django.urls import reverse_lazy
 from django.http import HttpResponse
 from django.views.generic.detail import DetailView
-from django.views.generic.edit import UpdateView
+from django.views.generic.edit import UpdateView, DeleteView
 from django.views import generic
 
 from .models import word
@@ -39,3 +40,8 @@ class WordUpdateView(UpdateView):
     model = word
     fields = ['meaning', 'examples']
     template_name = 'wordUpdate.html'
+
+class WordDeleteView(DeleteView):
+    model = word
+    template_name = 'wordConfirmDelete.html'
+    success_url = reverse_lazy('wordslist')
