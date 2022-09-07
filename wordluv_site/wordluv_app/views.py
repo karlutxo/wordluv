@@ -4,7 +4,7 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.http import HttpResponse
 from django.views.generic.detail import DetailView
-from django.views.generic.edit import UpdateView, DeleteView
+from django.views.generic.edit import UpdateView, DeleteView, CreateView
 from django.views import generic
 
 from .models import word
@@ -45,3 +45,9 @@ class WordDeleteView(DeleteView):
     model = word
     template_name = 'wordConfirmDelete.html'
     success_url = reverse_lazy('wordslist')
+
+class WordCreateView(CreateView):
+    model = word
+    template_name = 'wordCreate.html'
+    success_url = reverse_lazy('wordslist')
+    fields = ['word', 'meaning', 'examples', 'slug']    

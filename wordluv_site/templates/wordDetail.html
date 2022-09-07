@@ -9,8 +9,8 @@
    <a href="{% url 'wordUpdate' word.slug %}"><small>edit</small></a>
    <a href="{% url 'wordDelete' word.slug %}"><small>Delete</small></a>
  
-   <p><strong>Meaning:</strong> {{ word.meaning }}</p>
-   <p><strong>Examples:</strong> {{ word.example }}</p>
+   <p><strong>Meaning:</strong><br> {{ word.meaning|linebreaksbr }}</p>
+   <p><strong>Examples:</strong><br> {{ word.examples|linebreaksbr }}</p>
  {% endblock %}
 
  
