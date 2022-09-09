@@ -40,8 +40,47 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     'wordluv_app',
+
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',    
+
+    'allauth.socialaccount.providers.facebook',
+
+# https://django-allauth.readthedocs.io/en/latest/providers.html#app-registration
+# https://console.cloud.google.com/apis/credentials/consent?referrer=search&project=django-wordluv
+# https://console.cloud.google.com/apis/credentials?project=django-wordluv
+    'allauth.socialaccount.providers.google',
+
+    'allauth.socialaccount.providers.instagram',
+    'allauth.socialaccount.providers.twitter',
 ]
+
+
+SITE_ID = 4
+
+# Provider specific settings
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        # For each OAuth based provider, either add a ``SocialApp``
+        # (``socialaccount`` app) containing the required client
+        # credentials, or list them here:
+#            'APP': {
+#                'client_id': 'xxxxxxxxxxxxxxxxxxx',
+#                'secret': 'xxxxxxxxxxxxxxxxxxxxxx',
+#                'key': ''
+#            }
+        }
+    }
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -107,9 +146,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es-es'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/London'
 
 USE_I18N = True
 
@@ -125,3 +164,19 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+AUTHENTICATION_BACKENDS = [
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_EMAIL_REQUIRED=True
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+ACCOUNT_LOGOUT_ON_PASSWORD_CHANGE = True
+#ACCOUNT_USER_MODEL_USERNAME_FIELD = None
