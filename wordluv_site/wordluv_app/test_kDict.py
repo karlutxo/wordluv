@@ -6,7 +6,8 @@ import logging
 
 # logging.basicConfig(encoding='utf-8', level=logging.DEBUG)
 
-w = input("Introduce un termino: ")
+#w = input("Introduce un termino: ")
+w = "méchant"
 
 '''
 print(w + " según LeRobert....")

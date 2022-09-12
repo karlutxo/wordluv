@@ -42,10 +42,11 @@ class kDict:
         definition_div = soup.find("div", class_="mw-parser-output")
         definition_ol  = definition_div.find("ol")
         # print(definition_section.prettify())
-        definitions = definition_ol.find_all("li")
+        definitions = definition_ol.find_all("li", recursive=False, limit=10)
         for d in definitions:
-        # print(d.prettify())
+#            print(d.prettify())
             if d is not None: 
+                d.ul.replace_with("")
                 meaning.append(d.text.strip())
                 #print(definition.find("span", class_="d_dfn").text.strip())
                 
