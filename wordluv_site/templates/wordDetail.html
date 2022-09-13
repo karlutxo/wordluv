@@ -6,6 +6,14 @@
 
    {% block content %}
    <h1>{{ word.word }}</h1> 
+ 
+ 
+   <br>
+ 
+   {{ meaning|linebreaksbr }}
+
+   <br>
+ 
    <a href="{% url 'wordUpdate' word.slug %}"><small>edit</small></a>
    <a href="{% url 'wordDelete' word.slug %}"><small>Delete</small></a>
  
@@ -19,4 +27,4 @@
  <a href="{% url 'wordslist' %}">Volver</a>
 
 
-</body>   
+ </body>   
