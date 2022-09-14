@@ -5,6 +5,7 @@
 
 
    {% block content %}
+   {{user}}
    <h1>{{ word.word }}</h1> 
  
  
@@ -26,5 +27,6 @@
  <hr>
  <a href="{% url 'wordslist' %}">Volver</a>
 
-
+ <div id="django-debug"><pre>{% debug %}</pre></div> 
+ 
  </body>   
