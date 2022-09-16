@@ -86,4 +86,12 @@ class WordCreateView(CreateView):
     model = word
     template_name = 'wordCreate.html'
     success_url = reverse_lazy('wordslist')
-    fields = ['word', 'meaning', 'examples', 'slug']    
+    fields = ['word', 'meaning', 'examples']    
+
+    def get_initial(self):
+        super(WordCreateView, self).get_initial()
+        # alert = Alert.objects.get(pk=self.request.POST.get("alert_id"))
+        owner = self.request.user.username
+        logging.debug('get_initial: owner='+owner)
+        self.initial = {"owner":owner}
+        return self.initial
